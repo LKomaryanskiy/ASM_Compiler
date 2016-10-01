@@ -1,0 +1,59 @@
+0000 	DATA SEGMENT
+0000 4546 	VAL1	DW	4546h
+0002 54 45 53 54 	VAL2	DB	'TEST'
+0006 D0 A3 D0 9A D0 A0 D0 90 D0 87 D0 9D D0 90 	VAL3	DB	'УКРАЇНА'
+0014 0D7856FDA 	VAL4	DD	0D7856FDAh
+0018 	=5A4H  EXP	EQU 5A4h
+0018 	=1H  EXP1	EQU	1h
+0018 	=0H  EXP2	EQU	0h
+0018 	DATA ENDS
+0000 	CODE SEGMENT
+0000   	ELSE
+0000 0F 85 0026 R 		jne LABEL2
+0004 40 		Inc ax
+0005 40  		inc eax	
+0005 42 		inc dx
+0006 43 		inc bx
+0007 FE C0 		inc al
+0009 FE C4 		inc ah
+000B FE C1 		inc cl
+000D FE C5 		inc ch
+000F FE C2 		inc dl
+0011 FE C6 		inc dh
+0013 FE C3 		inc bl
+0015 FE C7 		inc bh
+0017 26: FE 4B 01 		Dec BYTE PTR es:[bp+di+EXP1]
+001B   		ENDIF
+001B   		IF EXP1
+001B 26: 1A 41 01 		Sbb al, es:[bx+di +EXP1]
+001F 26: 1A 41 01  		Sbb bl, es:[ebp + esi +EXP1]
+001F FE 88 05A4 		Dec BYTE PTR [bx + si + EXP]
+0023 26: 85 02 		Test es:[bp+si],ax
+0026 26: 85 02  		Test ax, es:[bp+si]
+0026 		LABEL2:
+0026   		ENDIF
+0026 	CODE ENDS
+0000 	end
+
+
+Name                     Size      Length
+DATA                     16 Bit    0018
+CODE                     16 Bit    0026
+
+
+Name                     Type      Value          Attr
+EXP                      NUMBER    05A4           
+EXP1                     NUMBER    0001           
+EXP2                     NUMBER    0000           
+
+LABEL2                   L NEAR    0026           CODE
+
+VAL1                     WORD      0000           DATA
+VAL2                     BYTE      0002           DATA
+VAL3                     BYTE      0006           DATA
+VAL4                     DWORD     0014           DATA
+
+
+In row:	14	Error
+In row:	29	Error
+In row:	32	Error

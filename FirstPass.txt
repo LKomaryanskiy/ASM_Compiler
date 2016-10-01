@@ -1,0 +1,67 @@
+0000	DATA SEGMENT
+0000	VAL1	DW	4546h
+0002	VAL2	DB	'TEST'
+0006	VAL3	DB	'УКРАЇНА'
+0014	VAL4	DD	0D7856FDAh
+0018	=5A4H  EXP	EQU 5A4h
+0018	=1H  EXP1	EQU	1h
+0018	=0H  EXP2	EQU	0h
+0018	DATA ENDS
+0000	CODE SEGMENT
+0000		LABEL1:
+0000		jne LABEL2
+0004		Sti 
+0005		Inc ax
+0006		inc cx	
+0007		inc dx
+0008		inc bx
+0009		inc al
+000B		inc ah
+000D		inc cl
+000F		inc ch
+0011		inc dl
+0013		inc dh
+0015		inc bl
+0017		inc bh
+0019		Dec BYTE PTR es:[bp+di+EXP1]
+001D		Dec BYTE PTR [bx + si + EXP]
+0021		Test es:[bp+si],ax
+0024		LABEL2:
+0024		Or ax, EXP1
+0027		Sbb al, es:[bx+di +EXP1]
+002B		Movsx ax, al
+002E		movsx cx, al
+0031		Movsx bx, al
+0034		movsx dx, al
+0037		movsx ax, cx
+003A		movsx cx, cx
+003D		movsx bx, cx
+0040		movsx dx, cx
+0043		Add byte ptr [EXP1+bp+si],EXP1
+0047		Add byte ptr gs:[bp+di],EXP1
+004B		Jne LABEL1
+004D	CODE ENDS
+0000	end
+
+
+Name                     Size      Length
+DATA                     16 Bit    0018
+CODE                     16 Bit    004D
+
+
+Name                     Type      Value          Attr
+EXP                      NUMBER    05A4           
+EXP1                     NUMBER    0001           
+EXP2                     NUMBER    0000           
+
+LABEL1                   L NEAR    0000           CODE
+LABEL2                   L NEAR    0024           CODE
+
+VAL1                     WORD      0000           DATA
+VAL2                     BYTE      0002           DATA
+VAL3                     BYTE      0006           DATA
+VAL4                     DWORD     0014           DATA
+
+
+	0 Warning Errors
+	0 Severe  Errors
